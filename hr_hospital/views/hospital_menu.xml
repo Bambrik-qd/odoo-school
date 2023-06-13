@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <menuitem id="hospital_menu_root"
+            name="Hospital"
+            sequence="1"/>
+
+  <menuitem id="hospital_menu_catalog"
+            name="Catalogs"
+            parent="hospital_menu_root"/>
+
+
+  <menuitem id="hospital_menu_visit"
+            name="Visits"
+            action="hospital_visit_action_view_tree"
+            parent="hospital_menu_root"/>
+
+  <menuitem id="menu_hospital_doctor"
+            name="Doctors"
+            parent="hospital_menu_catalog"
+            action="hospital_doctor_action_view_tree"
+            sequence="20"/>
+
+  <menuitem id="menu_hospital_patient"
+            name="Patients"
+            parent="hospital_menu_catalog"
+            action="hospital_patient_action_view_tree"
+            sequence="30"/>
+
+</odoo>

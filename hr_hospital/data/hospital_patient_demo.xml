@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="hospital_patient_patient1" model="hr.hosp.patient">
+        <field name="name">Patient 1</field>
+        <field name="doctor_id" ref="hospital_doctor_doctor1"/>
+    </record>
+
+    <record id="hospital_patient_patient2" model="hr.hosp.patient">
+        <field name="name">Patient 2</field>
+        <field name="doctor_id" ref="hospital_doctor_doctor3"/>
+    </record>
+
+    <record id="hospital_patient_patient3" model="hr.hosp.patient">
+        <field name="name">Patient 3</field>
+        <field name="doctor_id" ref="hospital_doctor_doctor2"/>
+    </record>
+
+</odoo>

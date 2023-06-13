@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="hospital_doctor_doctor1" model="hr.hosp.doctor">
+        <field name="name">Doctor 1 (main)</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_doctor2" model="hr.hosp.doctor">
+        <field name="name">Лікар 2</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_doctor3" model="hr.hosp.doctor">
+        <field name="name">Doctor 3</field>
+        <field name="is_active" eval="False"/>
+    </record>
+
+</odoo>

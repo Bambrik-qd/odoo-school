@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate = "1">
+
+    <record id="hospital_disease_diagnosis1" model="hr.hosp.disease">
+        <field name="name">Diagnosis1</field>
+    </record>
+    <record id="hospital_disease_diagnosis2" model="hr.hosp.disease">
+        <field name="name">Diagnosis2</field>
+    </record>
+    <record id="hospital_disease_diagnosis3" model="hr.hosp.disease">
+        <field name="name">Diagnosis3</field>
+    </record>
+
+</odoo>
