@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_write_timetable_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hosp.write.timetable.wizard.view.form</field>
+        <field name="model">hr.hosp.write.timetable</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="begin_date"/>          
+                    <field name="end_date"/> 
+                </group>
+                <group>
+                    <field name="begin_time" widget="float_time"/>          
+                    <field name="end_time" widget="float_time"/> 
+                </group>
+                <!-- <group>
+                    <field name="doctor_ids"/> 
+                </group> -->
+                <footer>
+                    <button 
+                        string="Create table" 
+                        class="btn btn-primary" 
+                        type="object" 
+                        name="action_write_timetable" 
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -16,15 +16,24 @@
         'views/hospital_doctor_views.xml',
         'views/hospital_patient_views.xml',
         'views/hospital_visit_views.xml',
-        'views/hospital_menu.xml',
+        'views/hospital_disease_views.xml',
+        'views/hospital_history_views.xml',
+        'views/timetable_views.xml',
+        'wizard/disease_report_wizard_view.xml',
+        'wizard/change_doctor_wizard_view.xml',
+        'wizard/write_timetable_wizard_view.xml',
+        'wizard/transfer_visit_wizard_view.xml',
 
+        'views/hospital_menu.xml',
         'data/hospital_disease_data.xml',
-        'data/hr.hosp.doctor.csv',
+
+        # 'data/hr.hosp.doctor.csv',
 
     ],
 
     'demo': [
-        'data/hospital_doctor_demo.xml',
-        'data/hospital_patient_demo.xml',
+        'demo/hospital_doctor_demo.xml',
+        'demo/hospital_patient_demo.xml',
+        'demo/hospital_visit_demo.xml',
     ],
 }

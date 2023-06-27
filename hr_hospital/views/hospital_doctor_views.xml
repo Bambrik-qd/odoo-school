@@ -6,8 +6,16 @@
     <field name="model">hr.hosp.doctor</field>
     <field name="arch" type="xml">
       <form>
-        <field name="name"/>
-        <field name="is_active"/>
+        <group>
+          <field name="name"/>
+          <field name="last_name"/>
+          <field name="first_name"/>
+          <field name="speciality"/>
+          <field name="photo" widget="image" class="oe_avatar" options="{'image_preview': 'image_128'}"/>
+          <field name="gender"/>
+          <field name="is_intern"/>
+          <field name="mentor_id" attrs = "{'invisible': [('is_intern', '=', False)]}"/>  
+        </group>
       </form>
     </field>
   </record>
@@ -17,8 +25,11 @@
     <field name="model">hr.hosp.doctor</field>
     <field name="arch" type="xml">
       <tree>
+         <header>
+          <button string="Write timetable" name="action_write_timetable" type="object" class="oe_highlight"/>
+        </header>     
         <field name="name"/>
-        <field name="is_active"/>
+        <field name="active"/>
       </tree>
     </field>
   </record>

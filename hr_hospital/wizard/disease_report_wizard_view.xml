@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_disease_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hosp.disease.report.wizard.view.form</field>
+        <field name="model">hr.hosp.disease.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="begin_date"/>          
+                    <field name="end_date"/> 
+                </group>
+                <footer>
+                    <button 
+                        string="Generate a report" 
+                        class="btn btn-primary" 
+                        type="object" 
+                        name="action_generate_report" 
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>    
+
+    <record id="hr_hosp_disease_report_action_act_window" model="ir.actions.act_window">
+        <field name="name">Disease report for the period</field>
+        <field name="res_model">hr.hosp.disease.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="hr_hosp_disease_report_act_window" model="ir.actions.act_window">
+        <field name="name">Disease report for the period</field>
+        <field name="res_model">hr.hosp.disease.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref = 'model_hr_hosp_doctor'></field>
+        <field name="binding_view_types">form,list</field>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <!-- hr.hosp.count.diagnosis -->
+    <record id="hr_hosp_count_diagnosis_view_tree" model="ir.ui.view">
+        <field name="name">hr.hosp.count.diagnosis.view.tree</field>
+        <field name="model">hr.hosp.count.diagnosis</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="mounth_data"/>
+            <field name="disease_id"/>
+            <field name="count_diagnosis"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="hospital_count_diagnosis_action_view_tree" model="ir.actions.act_window">
+        <field name="name">Number of diagnoses for disease for the period</field>
+        <field name="res_model">hr.hosp.count.diagnosis</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+</odoo>
