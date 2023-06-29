@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <record id="hr_hosp_timetable_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.timetable.view.form</field>
+    <field name="model">hr.hosp.timetable</field>
+    <field name="arch" type="xml">
+      <form delete="false">
+        <sheet>
+          <div class="oe_title">
+            <group>
+              <field name="visit_date_time"/>
+              <field name="patient_id"/>
+              <field name="doctor_id"/>
+            </group>
+          </div>          
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_hosp_timetable_view_tree" model="ir.ui.view">
+    <field name="name">hr.hosp.timetable.view.tree</field>
+    <field name="model">hr.hosp.timetable</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="visit_date_time"/>
+        <field name="patient_id"/>
+        <field name="doctor_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="hospital_timetable_action_view_tree" model="ir.actions.act_window">
+    <field name="name">Timetable</field>
+    <field name="res_model">hr.hosp.timetable</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+</odoo>

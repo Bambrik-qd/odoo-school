@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <record id="hr_hosp_doctor_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.doctor.view.form</field>
+    <field name="model">hr.hosp.doctor</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="name"/>
+          <field name="last_name"/>
+          <field name="first_name"/>
+          <field name="speciality"/>
+          <field name="photo" widget="image" class="oe_avatar" options="{'image_preview': 'image_128'}"/>
+          <field name="gender"/>
+          <field name="is_intern"/>
+          <field name="mentor_id" attrs = "{'invisible': [('is_intern', '=', False)]}"/>  
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_hosp_doctor_view_tree" model="ir.ui.view">
+    <field name="name">hr.hosp.doctor.view.tree</field>
+    <field name="model">hr.hosp.doctor</field>
+    <field name="arch" type="xml">
+      <tree>
+         <header>
+          <button string="Write timetable" name="action_write_timetable" type="object" class="oe_highlight"/>
+        </header>     
+        <field name="name"/>
+        <field name="active"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="hospital_doctor_action_view_tree" model="ir.actions.act_window">
+    <field name="name">Doctors</field>
+    <field name="res_model">hr.hosp.doctor</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+</odoo>
+

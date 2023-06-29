@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="hospital_doctor_ivan" model="hr.hosp.doctor">
+        <field name="name">Іванов Іван</field>
+        <field name="last_name">Іван</field>
+        <field name="first_name">Іванов</field>
+        <field name="email">doctor_ivan@gmail.com</field>
+        <field name="gender">male</field>
+        <field name="photo" file="hr_hospital/static/img/ivanov.jpg" type="base64"/>
+        <field name="speciality">Терапевт</field>
+        <field name="is_intern" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_petr" model="hr.hosp.doctor">
+        <field name="name">Петров Петр</field>
+        <field name="last_name">Петр</field>
+        <field name="first_name">Петров</field>
+        <field name="email">doctor_petr@gmail.com</field>
+        <field name="gender">male</field>
+        <field name="photo" file="hr_hospital/static/img/petrov.jpg" type="base64"/>
+        <field name="speciality">Терапевт</field>
+        <field name="is_intern" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_sidr" model="hr.hosp.doctor">
+        <field name="name">Сідоров Сідор</field>
+        <field name="last_name">Сідор</field>
+        <field name="first_name">Сідоров</field>
+        <field name="email">doctor_sidr@gmail.com</field>
+        <field name="gender">male</field>
+        <field name="photo" file="hr_hospital/static/img/sidorov.png" type="base64"/>
+        <field name="speciality">Интерн</field>
+        <field name="is_intern" eval="True"/>
+        <!-- <field name="mentor_id" ref="hospital_doctor_ivan"/> -->
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>

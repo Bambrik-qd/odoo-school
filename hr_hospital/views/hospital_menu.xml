@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <menuitem id="hospital_menu_root"
+            name="Hospital"
+            sequence="1"/>
+
+  <menuitem id="hospital_menu_visit"
+            name="Visits"
+            action="hospital_visit_action_view_tree"
+            parent="hospital_menu_root"/>
+
+  <menuitem id="hospital_menu_catalog"
+            name="Catalogs"
+            parent="hospital_menu_root"/>
+            
+  <menuitem id="menu_hospital_doctor"
+            name="Doctors"
+            parent="hospital_menu_catalog"
+            action="hospital_doctor_action_view_tree"
+            sequence="20"/>
+
+  <menuitem id="menu_hospital_patient"
+            name="Patients"
+            parent="hospital_menu_catalog"
+            action="hospital_patient_action_view_tree"
+            sequence="30"/>
+
+  <menuitem id="menu_hospital_disease"
+            name="Diseases"
+            parent="hospital_menu_catalog"
+            action="hospital_disease_action_view_tree"
+            sequence="40"/>   
+
+  <menuitem id="menu_hospital_history_changes_doctor"
+            name="History personal doctor changes"
+            parent="hospital_menu_catalog"
+            action="hospital_history_changes_doctor_action_view_tree"
+            sequence="50"/>                    
+
+  <menuitem id="menu_hospital_timetable"
+            name="Timetable doctors"
+            parent="hospital_menu_catalog"
+            action="hospital_timetable_action_view_tree"
+            sequence="60"/>  
+
+
+  <!-- Reports -->
+  <menuitem id="hospital_menu_report"
+            name="Reports"
+            parent="hospital_menu_root"/>
+    
+  <menuitem id="menu_hospital_disease_report_wizard"
+            name="Disease report for the period"
+            parent="hospital_menu_report"
+            action="hr_hosp_disease_report_action_act_window"
+            sequence="10"/>  
+
+  <!-- <record id="menu_transfer_visit_wizard" model="ir.ui.menu">
+    <field name="name">Transfer visit</field>
+    <field name="parent_id" ref = "hospital_menu_catalog"/>
+    <field name="action" ref = "hr_hosp_transfer_visit_action_server"/>
+    <field name="sequence" eval = "100"/>
+  </record> -->
+
+
+</odoo>
+

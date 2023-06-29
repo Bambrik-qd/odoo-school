@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <record id="hr_hosp_disease_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.disease.view.form</field>
+    <field name="model">hr.hosp.disease</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="name"/>
+          <field name="parent_id"/>
+          <field name="parent_path"/>          
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_hosp_disease_view_tree" model="ir.ui.view">
+    <field name="name">hr.hosp.disease.view.tree</field>
+    <field name="model">hr.hosp.disease</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="parent_id"/>
+        <field name="parent_path"/> 
+      </tree>
+    </field>
+  </record>
+
+  <record id="hospital_disease_action_view_tree" model="ir.actions.act_window">
+    <field name="name">Types of diseases</field>
+    <field name="res_model">hr.hosp.disease</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+</odoo>
+

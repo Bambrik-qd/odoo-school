@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_transfer_visit_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hosp.transfer.visit_wizard.wizard.view.form</field>
+        <field name="model">hr.hosp.transfer.visit</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <!-- <field name="old_doctor_ids" widget="many2many_tags"/> -->
+                    <field name="doctor_id"/>  
+                    <field name="patient_id"/>         
+                </group>
+                <group >                    
+                    <field name="timetable_id"/>  
+                    <field name="new_timetable_id"/>
+                </group>
+                <footer>
+                    <button 
+                        string="Transfer visit" 
+                        class="btn btn-primary" 
+                        type="object" 
+                        name="action_change_time" 
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>       
+  
+    <record id="hr_hosp_transfer_visit_act_window" model="ir.actions.act_window">
+        <field name="name">Transfer visit</field>
+        <field name="res_model">hr.hosp.transfer.visit</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref = 'model_hr_hosp_visit'></field>
+        <field name="binding_view_types">form,list</field>
+        <field name="binding_type">action</field>
+    </record>  
+   
+   <record id="hr_hosp_transfer_visit_action_server" model="ir.actions.server">
+        <field name="name">Transfer visit</field>
+        <field name="model_id" ref = 'model_hr_hosp_transfer_visit'/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_open_wizard()
+        </field>
+
+    </record>     
+    
+<!-- меню грузится после вьюх, к чему тогда привязивать?      -->
+
+
+</odoo>

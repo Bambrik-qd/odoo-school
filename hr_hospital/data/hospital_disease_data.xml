@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate = "1">
+
+    <record id="disease_nervous_system" model='hr.hosp.disease'>
+        <field name="name">DISEASES OF THE NERVOUS SYSTEM</field>
+    </record>
+    <record id="disease_nervous_system" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">ХВОРОБИ НЕРВОВОЇ СИСТЕМИ</field>
+    </record>
+
+    <record id="disease_inflammatory_nervous_system" model='hr.hosp.disease'>
+        <field name="name">Inflammatory diseases of the central nervous system</field>
+        <field name="parent_id" ref="disease_nervous_system"/>
+    </record>
+    <record id="disease_inflammatory_nervous_system" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Запальні хвороби центральної нервової системи</field>
+    </record>
+
+    <record id="disease_bacterial_meningitis" model='hr.hosp.disease'>
+        <field name="name">Bacterial meningitis</field>
+        <field name="parent_id" ref="disease_inflammatory_nervous_system"/>
+    </record>
+    <record id="disease_bacterial_meningitis" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Бактеріальний менінгіт</field>
+    </record>
+
+    <record id="disease_encephalitis" model='hr.hosp.disease'>
+        <field name="name">Encephalitis, myelitis and encephalomyelitis</field>
+        <field name="parent_id" ref="disease_inflammatory_nervous_system"/>
+    </record>
+    <record id="disease_encephalitis" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Енцефаліт, мієліт та енцефаломієліт</field>
+    </record>
+
+    <record id="disease_episodic_paroxysmal_disorders" model='hr.hosp.disease'>
+        <field name="name">Episodic and paroxysmal disorders</field>
+        <field name="parent_id" ref="disease_nervous_system"/>
+    </record>
+    <record id="disease_episodic_paroxysmal_disorders" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Епізодичні та параксизмальні порушення</field>
+    </record>
+
+    <record id="disease_epilepsy" model='hr.hosp.disease'>
+        <field name="name">Epilepsy</field>
+        <field name="parent_id" ref="disease_episodic_paroxysmal_disorders"/>
+    </record>
+    <record id="disease_epilepsy" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Епілепсія</field>
+    </record>
+
+    <record id="disease_migraine" model='hr.hosp.disease'>
+        <field name="name">Migraine</field>
+        <field name="parent_id" ref="disease_episodic_paroxysmal_disorders"/>
+    </record>
+    <record id="disease_migraine" model='hr.hosp.disease' context = "{'lang': 'uk_UA'}">
+        <field name="name">Мігрень</field>
+    </record>
+
+</odoo>
