@@ -1,4 +1,4 @@
-# from odoo import models, fields
+from odoo import models, fields
 
 class ContactPerson(models.Model):
     _name = 'hr.hosp.contact.person'

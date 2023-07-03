@@ -1,20 +1,20 @@
-<odoo>
+<odoo noupdate = '1'>
 
-    <record id="hospital_visit1" model="hr.hosp.visit">
+    <record id="hospital_visit01" model="hr.hosp.visit">
         <!-- <field name="visit_date_time">2023-06-26 08:00:00</field> -->
         <field name="patient_id" ref="hospital_patient_ivanna"/>
         <field name="doctor_id" ref="hospital_doctor_ivan"/>       
         <field name="state">draft</field> 
     </record>
 
-    <record id="hospital_visit2" model="hr.hosp.visit">
+    <record id="hospital_visit02" model="hr.hosp.visit">
         <!-- <field name="visit_date_time">2023-06-27 08:00:00</field> -->
         <field name="patient_id" ref="hospital_patient_ivanna"/>
         <field name="doctor_id" ref="hospital_doctor_ivan"/>       
         <field name="state">draft</field> 
     </record>
 
-    <record id="hospital_visit3" model="hr.hosp.visit">
+    <record id="hospital_visit03" model="hr.hosp.visit">
         <!-- <field name="visit_date_time">2023-06-26 08:20:00</field> -->
         <field name="patient_id" ref="hospital_patient_ganna"/>
         <field name="doctor_id" ref="hospital_doctor_ivan"/>       

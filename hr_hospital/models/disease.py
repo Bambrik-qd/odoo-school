@@ -25,3 +25,4 @@ class Disease(models.Model):
     #     for category in self:
     #         res.append((category.id, " / ".join(category.parents_and_self.mapped('name'))))
     #     return res
+

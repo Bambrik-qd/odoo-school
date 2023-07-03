@@ -5,6 +5,7 @@ from . import disease
 from . import contact_person
 from . import patient
 from . import (
+    analysis,
     visit,
     history_changes_doctor,
     timetable,

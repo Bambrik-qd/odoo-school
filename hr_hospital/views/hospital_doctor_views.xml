@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-  <record id="hr_hosp_doctor_view_form" model="ir.ui.view">
+  <!-- <record id="hr_hosp_doctor_view_form" model="ir.ui.view">
     <field name="name">hr.hosp.doctor.view.form</field>
     <field name="model">hr.hosp.doctor</field>
     <field name="arch" type="xml">
@@ -18,6 +18,154 @@
         </group>
       </form>
     </field>
+  </record> -->
+
+  <record id="hr_hosp_doctor_kanban" model="ir.ui.view">
+    <field name="name">hr.hosp.doctor.kanban</field>
+    <field name="model">hr.hosp.doctor</field>
+    <field name="arch" type="xml">
+      <kanban class = 'o_kanban_mobile'>
+        <templates>
+          <t t-name="kanban-box">
+            <div  class="oe_kanban_content">
+              <div class="oe_kanban_details">
+                <div class="oe_kanban_title">
+                  <field name="name" widget="name" decoration-bf="1"/>
+                </div>
+                <div class="oe_kanban_subtitle">
+                  <field name="gender" />
+                  <newline/>
+                  <field name="speciality" />
+                </div>
+              </div>
+              <div class="oe_kanban_avatar">
+                <img 
+                  t-att-src="kanban_image('hr.hosp.doctor', 'photo', record.id.raw_value)" 
+                  t-att-title="record.id.value" 
+                  t-att-alt="record.id.value" 
+                  class="oe_kanban_avatar o_image_24_cover"/>
+              </div>             
+            </div>            
+           
+            
+
+          </t>
+        </templates>
+      </kanban>
+    </field>
+
+  </record>
+
+  <record id="hr_hosp_doctor_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.doctor.view.form</field>
+    <field name="model">hr.hosp.doctor</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <!-- <field name="is_mentor" invisible = '1'/> -->
+          <h1>
+            <field name="name" />
+          </h1>
+          <newline />
+          <group>
+            <!-- <field name="name"/> -->
+            <field name="last_name" />
+            <field name="first_name" />
+            <field name="gender" />
+            <field name="speciality" />
+            <field name="is_intern" />
+            <field name="mentor_id" attrs="{'invisible': [('is_intern', '=', False)]}" />
+          </group>
+          <group>
+            <field name="photo" widget="image"
+              options='{"size": [180, 180], "image_preview":"image_128"}' />
+          </group>
+          <notebook attrs="{'invisible': [('is_intern', '=', True)]}" >
+            <page name="interns" string="Interns" autofocus="autofocus">
+              <field name="intern_ids" 
+                     mode="kanban"
+                     context="{
+                              'default_is_intern': True, 
+                              'default_mentor_id': active_id}">
+                <kanban class = 'o_kanban_mobile'>
+                  <field name="id" />
+                  <field name="name" />
+                  <field name="photo" />
+                  <field name="gender" />
+                  <field name="speciality" />
+
+                  <!-- <templates>
+                    <t t-name="kanban-box">
+                      <div class="oe_kanban_content">
+                        <div class="oe_kanban_avatar">
+                          <img
+                            t-att-src="kanban_image('hr.hosp.doctor', 'photo', record.id.value)"
+                            class="img img-responsive" />
+                        </div>
+                        <div class="oe_kanban_details">
+                          <div class="oe_kanban_title">
+                            <field name="name" widget="name" />
+                          </div>
+                          <div class="oe_kanban_subtitle">
+                            <field name="gender" />
+                            <field name="speciality" />
+                          </div>
+                        </div>
+                      </div>
+                    </t>
+                  </templates> -->
+                  <!-- <templates>
+                    <t t-name="kanban-box">
+                      <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                        <div class="oe_kanban_avatar">
+                          <img
+                            t-att-src="kanban_image('hr.hosp.doctor', 'photo', record.id.value)"
+                            class="img img-responsive" />
+                        </div>
+                        <div class="oe_kanban_details">
+                          <div class="oe_kanban_title">
+                            <field name="name" widget="name" />
+                          </div>
+                          <div class="oe_kanban_subtitle">
+                            <field name="gender" />
+                            <field name="speciality" />
+                          </div>
+                        </div>
+                      </div>
+                    </t>
+                  </templates> -->
+                  <templates>
+                    <t t-name="kanban-box">
+                      <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                        <div class="o_kanban_image">
+                          <img alt="Intern photo"
+                            t-att-src="kanban_image('hr.hosp.doctor', 'photo', record.id.raw_value)"
+                            class="o_image_64_max" height="52"
+                          />
+                          <!-- <img
+                            t-att-src="kanban_image('hr.hosp.doctor', 'photo', record.id.value)"
+                            class="oe_kanban_avatar o_image_24_cover" /> -->
+
+                        </div>
+                        <div class="oe_kanban_details">
+                          <div class="oe_kanban_title">
+                            <field name="name" widget="name" decoration-bf="1" />
+                          </div>
+                          <div t-if="record.gender.raw_value">Gender: <t t-esc="record.gender.value" /></div>
+                          <div t-if="record.speciality.raw_value">Spec.: <t t-esc="record.speciality.value" /></div>
+                        </div>                        
+                      </div>
+
+                    </t>
+                  </templates>                
+                </kanban>
+              </field>     
+            </page>
+          </notebook>
+
+        </group>
+      </form>
+    </field>
   </record>
 
   <record id="hr_hosp_doctor_view_tree" model="ir.ui.view">
@@ -30,6 +178,7 @@
         </header>     
         <field name="name"/>
         <field name="active"/>
+        <field name="is_intern"/>
       </tree>
     </field>
   </record>
@@ -37,8 +186,7 @@
   <record id="hospital_doctor_action_view_tree" model="ir.actions.act_window">
     <field name="name">Doctors</field>
     <field name="res_model">hr.hosp.doctor</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree,kanban,form</field>
   </record>
 
 </odoo>
-

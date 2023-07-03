@@ -1,0 +1,22 @@
+<odoo noupdate = '1'>
+
+    <record id="hospital_analysis_blood" model="hr.hosp.analysis">
+        <!-- <field name="visit_date_time">2023-06-26 08:00:00</field> -->
+        <field name="name">Blood</field>
+        <field name="price">100</field>       
+        <field name="description">Clinical blood test: general analysis, leukocyte formula, ESR</field> 
+    </record>
+
+    <record id="hospital_analysis_urine" model="hr.hosp.analysis">
+        <field name="name">Urine</field>
+        <field name="price">150</field>       
+        <field name="description">General urine analysis</field> 
+    </record>
+
+    <record id="hospital_analysis_feces" model="hr.hosp.analysis">
+        <field name="name">Feces</field>
+        <field name="price">175</field>       
+        <field name="description">General analysis of feces (coprogram)</field> 
+    </record>
+
+</odoo>

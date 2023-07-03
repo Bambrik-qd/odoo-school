@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate = '1'>
 
     <record id="hospital_patient_ivanna" model="hr.hosp.patient">
         <field name="name">Іванова Іванна</field>
@@ -9,6 +9,7 @@
         <field name="birth_date">1980-09-26 00:00:00</field>
         <field name="passport_data">multypassport</field>
         <field name="doctor_id" ref="hospital_doctor_ivan"/>
+        <field name="photo" file="hr_hospital/static/img/cat.jpg" type="base64"/>
     </record>
 
     <record id="hospital_patient_ganna" model="hr.hosp.patient">
@@ -20,6 +21,7 @@
         <field name="birth_date">1980-09-26 00:00:00</field>
         <field name="passport_data">multypassport</field>
         <field name="doctor_id" ref="hospital_doctor_ivan"/>
+        <field name="photo" file="hr_hospital/static/img/dog.jpg" type="base64"/>
     </record>
     <!-- <record id="hospital_patient_patient1" model="hr.hosp.patient">
         <field name="name">Patient 1</field>

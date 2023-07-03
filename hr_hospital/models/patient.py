@@ -16,6 +16,19 @@ class Patient(models.Model):
     age = fields.Integer(compute = '_compute_age')
     passport_data = fields.Char()
     contact_id = fields.Many2one(comodel_name = 'hr.hosp.contact.person', string = 'Contact person')
+    history_ids = fields.One2many(
+        comodel_name = 'hr.hosp.history.changes.doctor', 
+        inverse_name='patient_id',
+        string = 'History changes doctor')
+    diseases_ids = fields.One2many(
+        comodel_name = 'hr.hosp.disease.history',
+        string = 'History diseasis',
+        # relation = 'patient_deseases_line_rel',
+        inverse_name = 'patient_id',  
+        auto_join=True,
+    )    
+
+    description = fields.Text()
 
     @api.depends('birth_date')
     def _compute_age(self):
@@ -64,3 +77,77 @@ class Patient(models.Model):
             },
         }
        
+    def action_visit(self):
+        self.ensure_one()
+        return {
+            'name': _('Visits'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'hr.hosp.visit',
+            'target': 'new',
+            'context': {
+                'default_patient_id': self.id,
+                'default_doctor_id': self.doctor_id.id,
+            },
+        }
+        
+    def action_visits(self):
+        # ids = [rec.id for rec in self]
+        self.ensure_one()
+        return {
+            'name': _('Visits'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'res_model': 'hr.hosp.visit',
+            'target': 'new',
+            'domain': [('patient_id', '=', self.id)],
+            # 'context': {
+            #     'search_default_patient_id': self.id,
+            # },
+        }
+        
+    def action_appointments(self):
+        # ids = [rec.id for rec in self]
+        self.ensure_one()
+        return {
+            'name': _('Appointments'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'res_model': 'hr.hosp.diagnosis',
+            'target': 'current',
+            'domain': [('patient_id', '=', self.id)],
+            # 'context': {
+            #     'search_default_patient_id': self.id,
+            # },
+        }
+     
+    def action_analyzes(self):
+        # ids = [rec.id for rec in self]
+        self.ensure_one()
+        return {
+            'name': _('Analyzes'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'res_model': 'hr.hosp.analysis.history',
+            'target': 'current',
+            'domain': [('patient_id', '=', self.id),
+                       ('doctor_id', '=', self.doctor_id.id),
+                       ],
+            # 'context': {
+            #     'search_default_patient_id': self.id,
+            # },
+        }
+       
+class DiseaseHistory(models.Model):
+    _name = 'hr.hosp.disease.history'
+    _description = 'History diseasis'
+    # _rec_name = 'disease_id'
+    
+    disease_id = fields.Many2one(comodel_name = 'hr.hosp.disease')
+    patient_id = fields.Many2one(comodel_name = 'hr.hosp.patient')    
+    disease_date = fields.Date()   
+    name = fields.Char(readonly=True, compute = '_compute_name')
+    
+    def _compute_name(self):
+        for rec in self:
+            rec.name = f'{rec.disease_date}: {rec.disease_id.name}'

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+  <record id="hr_hosp_visit_search" model="ir.ui.view">
+    <field name="name">hr.hosp.visit.search</field>
+    <field name="model">hr.hosp.visit</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="visit_date_id"/>
+        <field name="patient_id"/>
+        <field name="diagnosis_id"/>
+        <field name="doctor_id"/>
+        <field name="state"/>
+      </search>
+    </field>
+  </record>
+
   <record id="hr_hosp_visit_view_form" model="ir.ui.view">
     <field name="name">hr.hosp.visit.view.form</field>
     <field name="model">hr.hosp.visit</field>

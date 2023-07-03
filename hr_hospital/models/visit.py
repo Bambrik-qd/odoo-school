@@ -97,7 +97,8 @@ class Visit(models.Model):
     def create(self, vals_list):
         if self.diagnosis_id and self.doctor_id.is_intern:
             vals_list['state'] = 'need_confirm'
-        self._check_record_time(vals_list)
+        if vals_list['state'] != 'draft':
+            self._check_record_time(vals_list)
         return super(Visit, self).create(vals_list)
 
     @api.onchange('diagnosis_id', 'doctor_id', 'comment')

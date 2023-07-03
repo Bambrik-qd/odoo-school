@@ -12,10 +12,18 @@ class Doctor(models.Model):
     )
     speciality = fields.Char()
     is_intern = fields.Boolean()
+    # is_mentor = fields.Boolean(
+    #     compute = '_compute_is_mentor'
+    # )
     mentor_id = fields.Many2one(
         comodel_name = 'hr.hosp.doctor',
         domain = [('is_intern', '=', False)],
     )
+    intern_ids = fields.One2many(
+        comodel_name = 'hr.hosp.doctor',
+        inverse_name = "mentor_id",
+        # readonly = True,
+        )
 
     def _check_is_intern(self, mentor_id):
         self.ensure_one()
@@ -26,9 +34,10 @@ class Doctor(models.Model):
     @api.model
     def create(self, vals_list):
         if vals_list.get('mentor_id'):
-            self._check_is_intern(vals_list.get('mentor_id'))
-
+            for doc in self:
+                doc._check_is_intern(vals_list.get('mentor_id'))
         return super(Doctor, self).create(vals_list)
+         
 
     def write(self, vals):
         for doc in self:
@@ -53,3 +62,9 @@ class Doctor(models.Model):
                 'default_ids': ids,
             },
         }
+        
+    # def _compute_is_mentor(self):
+    #     self.ensure_one()
+    #     interns = self.search(
+    #         ['mentor_id', '=', self.id]
+    #         ) 

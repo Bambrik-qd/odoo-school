@@ -16,7 +16,7 @@ class Person(models.AbstractModel):
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other')])
-    photo = fields.Image()
+    photo = fields.Image(max_width=1920, max_height=1920)
 
     @api.depends('first_name', 'last_name')
     def _compute_name(self):

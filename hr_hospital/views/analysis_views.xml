@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="hr_hosp_analysis_search" model="ir.ui.view">
+    <field name="name">hr.hosp.analysis.search</field>
+    <field name="model">hr.hosp.analysis</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name" />
+        <field name="description" />
+        <field name="price" />
+      </search>
+    </field>
+  </record>
+
+  <record id="hr_hosp_analysis_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.analysis.view.form</field>
+    <field name="model">hr.hosp.analysis</field>
+    <field name="arch" type="xml">
+      <form delete="false">
+        <sheet>
+          <div class="oe_title">
+            <group>
+              <field name="name" />
+              <field name="description" />
+              <field name="price" />
+            </group>
+          </div>
+          
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_hosp_analysis_view_tree" model="ir.ui.view">
+    <field name="name">hr.hosp.analysis.view.tree</field>
+    <field name="model">hr.hosp.analysis</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="description" />
+        <field name="price" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="hospital_analysis_action_view_tree" model="ir.actions.act_window">
+    <field name="name">Analyzes</field>
+    <field name="res_model">hr.hosp.analysis</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_hospital_analysis"
+    name="Analyzes"
+    parent="hr_hospital.hospital_menu_catalog"
+    action="hospital_analysis_action_view_tree"
+    sequence="70" />
+
+  <!-- Patient analyzes  -->
+  <record id="hr_hosp_analysis_history_view_form" model="ir.ui.view">
+    <field name="name">hr.hosp.analysis.history.view.form</field>
+    <field name="model">hr.hosp.analysis.history</field>
+    <field name="arch" type="xml">
+      <form delete="false">
+        <sheet>
+          <div class="oe_title">
+            <group>
+              <field name="date" />
+              <field name="patient_id" />
+            </group>
+          </div>
+          <group>
+            <field name="doctor_id" />
+          </group>
+          <group>
+            <field name="analysis_id"/>
+            <field name="amount" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_hosp_analysis_history_view_tree" model="ir.ui.view">
+    <field name="name">hr.hosp.analysis.history.view.tree</field>
+    <field name="model">hr.hosp.analysis.history</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="date" />
+        <field name="patient_id" />
+        <field name="doctor_id" />
+        <field name="analysis_id"/>
+        <field name="amount" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="hospital_analysis_history_action_view_tree" model="ir.actions.act_window">
+    <field name="name">Patient analyzes</field>
+    <field name="res_model">hr.hosp.analysis.history</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_hospital_analysis_history"
+    name="Patient analyzes"
+    parent="hr_hospital.hospital_menu_catalog"
+    action="hospital_analysis_history_action_view_tree"
+    sequence="80" />
+
+
+</odoo>

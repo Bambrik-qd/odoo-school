@@ -1,21 +1,74 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
   <record id="hr_hosp_patient_view_form" model="ir.ui.view">
     <field name="name">hr.hosp.patient.view.form</field>
     <field name="model">hr.hosp.patient</field>
     <field name="arch" type="xml">
-      <form>
-        <group>
-          <field name="doctor_id"/>
-          <field name="name"/>
-          <field name="last_name"/>
-          <field name="first_name"/>
-          <field name="photo" widget="image" class="oe_avatar" options="{'image_preview': 'image_128'}"/>
-          <field name="gender"/>   
-          <field name="birth_date"/> 
-          <field name="age"/>      
-        </group>
+      <form create="false">
+        <header>
+          <button type="object" name="action_visits" class="oe_stat_button" icon="fa-ambulance">
+            <div class="o_field_widget o_stat_info">
+              <span class="o_stat_text">Visits</span>
+            </div>
+          </button>
+          <button type="object" name="action_appointments" class="oe_stat_button" icon="fa-heartbeat">
+            <div class="o_field_widget o_stat_info">
+              <span class="o_stat_text">Appointment</span>
+            </div>
+          </button>
+          <button type="object" name="action_analyzes" class="oe_stat_button" icon="fa-medkit">
+            <div class="o_field_widget o_stat_info">
+              <span class="o_stat_text">Analysis</span>
+            </div>
+          </button>
+
+        </header>
+
+        <div class='oe_button_box' name='button_box'>
+
+          <button type="object" name="action_visit" class="oe_stat_button" icon="fa-plus-square">
+            <div class="o_field_widget o_stat_info">
+              <span class="o_stat_text">Add</span>
+              <span class="o_stat_text">Visit</span>
+            </div>
+          </button>
+        </div>
+
+        <sheet>
+          <group>
+            <h1>
+              <field name="name" />
+            </h1>
+            <newline />
+            <group>
+              <!-- <field name="name"/> -->
+              <field name="last_name" />
+              <field name="first_name" />
+              <field name="gender" />
+              <field name="birth_date" />
+              <field name="age" />
+              <field name="doctor_id" />
+            </group>
+            <group>
+              <field name="photo" widget="image"
+                options='{"size": [180, 180], "image_preview":"image_128"}' />
+            </group>
+            <notebook>
+              <page name="history_doctor" string="Doctor Appointment History" create="false">
+                <field name="history_ids" />
+              </page>
+              <page name="history_disease" string="Medical history">
+                <field name="diseases_ids" />
+              </page>
+              <page name='description' string='Notes'>
+                <field name="description" />
+              </page>
+
+            </notebook>
+
+          </group>
+        </sheet>
       </form>
     </field>
   </record>
@@ -26,13 +79,14 @@
     <field name="arch" type="xml">
       <tree>
         <header>
-          <button string="Change doctor" name="action_change_doctor" type="object" class="oe_highlight"/>
+          <button string="Change doctor" name="action_change_doctor" type="object"
+            class="oe_highlight" />
         </header>
-        <field name="name"/>
-        <field name="doctor_id"/>
+        <field name="name" />
+        <field name="doctor_id" />
       </tree>
     </field>
-  </record>  
+  </record>
 
   <record id="hospital_patient_action_view_tree" model="ir.actions.act_window">
     <field name="name">Patients</field>

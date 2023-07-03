@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate = '1'>
 
     <record id="hospital_doctor_ivan" model="hr.hosp.doctor">
         <field name="name">Іванов Іван</field>
@@ -24,15 +24,40 @@
         <field name="active" eval="True"/>
     </record>
 
-    <record id="hospital_doctor_sidr" model="hr.hosp.doctor">
-        <field name="name">Сідоров Сідор</field>
+    <record id="hospital_doctor_tkachenko" model="hr.hosp.doctor">
+        <field name="name">tkachenko Сідор</field>
         <field name="last_name">Сідор</field>
-        <field name="first_name">Сідоров</field>
-        <field name="email">doctor_sidr@gmail.com</field>
+        <field name="first_name">tkachenko</field>
+        <field name="email">doctor_tkachenko@gmail.com</field>
         <field name="gender">male</field>
-        <field name="photo" file="hr_hospital/static/img/sidorov.png" type="base64"/>
+        <field name="photo" file="hr_hospital/static/img/mio.jpg" type="base64"/>
         <field name="speciality">Интерн</field>
+        <field name="is_intern" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_melnik" model="hr.hosp.doctor">
+        <!-- <field name="name">Мелнiк Сідор</field> -->
+        <field name="last_name">Сідор</field>
+        <field name="first_name">Мелнiк</field>
+        <field name="email">doctor_melnik@gmail.com</field>
+        <field name="gender">male</field>
+        <field name="photo" file="hr_hospital/static/img/leo.jpg" type="base64"/>
+        <field name="speciality">Глазник</field>
         <field name="is_intern" eval="True"/>
+        <!-- <field name="mentor_id" ref="hospital_doctor_ivan"/> -->
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="hospital_doctor_shevchenko" model="hr.hosp.doctor">
+        <!-- <field name="name">Шевченко Ганна</field> -->
+        <field name="last_name">Ганна</field>
+        <field name="first_name">Шевченко</field>
+        <field name="email">doctor_shevchenko@gmail.com</field>
+        <field name="gender">female</field>
+        <field name="photo" file="hr_hospital/static/img/miky.jpg" type="base64"/>
+        <field name="speciality">ЛОР</field>
+        <!-- <field name="is_intern" eval="True"/> -->
         <!-- <field name="mentor_id" ref="hospital_doctor_ivan"/> -->
         <field name="active" eval="True"/>
     </record>
